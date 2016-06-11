@@ -1,7 +1,15 @@
-angular.module('gifsChat')
+angular.module('gifsChat', [])
 
-.controller('ChatController', function ($scope, apiService) {
+.controller('ChatController', function (apiService) {
 
-  // TODO: call giphy api and display gifst to front end
+  $scope.sendChat = function () {
+    apiService.getGif = function (queryText, callback) {}
+    .then(function (response) {
+      $scope.gifsArray.push(response.data.data[0])
+    })
+    .catch(function (err) {
+      console.error(err);
+    })
+  };
 
 });
